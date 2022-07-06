@@ -1,1 +1,1 @@
-https://andrew-9122.github.io/index.html
+https://andrew-9122.github.io/
