@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Fun</title>
+<style>
+body{ background: black;}
+canvas{display: block;}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<script type="text/javascript">
+
+let c = document.getElementById("c");
+let ctx =c.getContext("2d");
+
+c.height = window.innerHeight;
+c.width = window.innerWidth;
+
+let mass ="010000000112";
+mass=mass.split("");
+
+let font_size = 30;
+
+let columns = c.width/font_size;
+let drops = [];
+
+for(let x = 0; x<columns;x++)
+drops[x]=1;
+
+function draw()
+{
+ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+ctx.fillRect(0, 0, c.width, c.height);
+
+ctx.fillStyle = "#0f0";
+ctx.font=font_size +"px arial";
+
+for(let i=0; i<drops.length; i++)
+{
+let text =mass[Math.floor(Math.random()*mass.length)];
+ctx.fillText(text, i*font_size, drops[i]*font_size);
+
+if(drops[i]*font_size > c.height && Math.random() > 0.975)
+
+drops[i] = 0;
+
+drops[i]++;
+}
+}
+
+setInterval(draw, 60);
+
+</script>
+</body>
+</html>
